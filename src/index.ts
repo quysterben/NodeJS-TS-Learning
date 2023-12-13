@@ -9,12 +9,15 @@ import helmet from 'helmet'
 
 import cookieParser from 'cookie-parser'
 
+import serverRoute from './routes/router'
+
 import db from './models'
 
 dotenv.config()
 
 const app: Express = express()
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 app.use(helmet())
 app.use(cors())
 
@@ -38,7 +41,7 @@ const fileFilter = (req: Request, file: any, cb: any) => {
   }
 }
 
-app.use(multer({ storage: fileStorage, fileFilter }).array('images', 10))
+app.use(multer({ storage: fileStorage, fileFilter }).array('image', 10))
 
 app.use('/res/images', express.static(path.join(__dirname, 'res', 'images')))
 
@@ -46,8 +49,9 @@ app.get('/', (req: Request, res: Response) => {
   res.json({ messenge: 'Hello World' })
 })
 
+app.use('/api/v1', serverRoute)
+
 app.use((err: any, req: Request, res: Response, next: any) => {
-  console.log(err)
   const status = err.statusCode || 500
   const message = err.message
   const data = err.data
