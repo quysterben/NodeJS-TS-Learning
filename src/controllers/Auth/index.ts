@@ -57,7 +57,7 @@ class AuthController {
         throw err
       }
 
-      const isEqual = bcryptjs.compare(password, user.password as string)
+      const isEqual = await bcryptjs.compare(password, user.password as string)
       if (!isEqual) {
         const err: any = new Error('Wrong password!')
         err.statusCode = 401
