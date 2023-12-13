@@ -64,8 +64,8 @@ class AuthController {
         throw err
       }
 
-      const accessToken = createAccessToken({ _id: user._id, email: user.email, roles: user.roles })
-      const refreshToken = createRefreshToken({ _id: user._id, email: user.email, roles: user.roles })
+      const accessToken = createAccessToken({ _id: user._id, email: user.email, role: user.role })
+      const refreshToken = createRefreshToken({ _id: user._id, email: user.email, role: user.role })
 
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
@@ -126,7 +126,7 @@ class AuthController {
           return res.status(400).json({ success: false, message: 'This user is not exist!' })
         }
 
-        const accessToken = createAccessToken({ _id: result._id, role: result.roles })
+        const accessToken = createAccessToken({ _id: result._id, role: result.role, email: result.email })
         return res.status(200).json({
           success: true,
           message: 'Generate new access token success!',

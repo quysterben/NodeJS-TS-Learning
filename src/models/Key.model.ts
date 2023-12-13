@@ -6,7 +6,7 @@ const Key = mongoose.model(
     {
       resetPasswordToken: String,
       refreshToken: String,
-      user: {
+      userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
       }
