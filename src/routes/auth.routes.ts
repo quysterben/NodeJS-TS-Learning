@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import AuthController from '~/controllers/Auth'
+import AuthController from '~/controllers/auth.controller'
 import signinValidation from '~/validations/Auth/signinValidation'
 import signupValidation from '~/validations/Auth/signupValidation'
 
