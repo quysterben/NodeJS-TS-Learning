@@ -51,7 +51,7 @@ app.use('/res/images', express.static(path.join(__dirname, 'res', 'images')))
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
-  res.json({ messenge: 'Hello World' })
+  res.json({ messenge: 'Hello xin chao' })
 })
 app.use('/api/v1', serverRoute)
 app.use((err: any, req: Request, res: Response, next: any) => {

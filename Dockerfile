@@ -1,10 +1,7 @@
 FROM node:18
 
 LABEL author.name="ben" \
-      author.email="quysterben@gmail.com"
-
-RUN apt-get update && \
-  apt-get install -y nodejs nano vim
+  author.email="quysterben@gmail.com"
 
 WORKDIR /app
 
@@ -16,4 +13,4 @@ COPY . .
 
 RUN yarn build
 
-CMD ["yarn", "start"]
+CMD ["yarn", "dev"]
